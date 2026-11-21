@@ -1,2 +1,29 @@
-<h1>Coffee Tec</h1>
-<p>Página de inicio provisional - Sistema web de cafetería</p>
+
+<main>
+  <h1>Coffee Tec</h1>
+  <h2>Catálogo de productos</h2>
+
+  <p>Productos consultados desde PostgreSQL mediante Java.</p>
+
+  <button type="button" (click)="cargarProductos()">
+    Actualizar productos
+  </button>
+
+  @if (cargando) {
+    <p>Consultando productos...</p>
+  } @else if (error) {
+    <p>Error: {{ error }}</p>
+  } @else {
+    <p>Total de productos: {{ productos.length }}</p>
+
+    @for (producto of productos; track producto.idProducto) {
+      <article>
+        <h3>{{ producto.nombre }}</h3>
+        <p>Precio: ${{ producto.precio }}</p>
+        <p>Stock: {{ producto.stock }}</p>
+      </article>
+    } @empty {
+      <p>No hay productos registrados en la base de datos.</p>
+    }
+  }
+</main>
