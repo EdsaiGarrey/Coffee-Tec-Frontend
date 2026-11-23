@@ -1,0 +1,113 @@
+/* Fondo general con tono cálido suave */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fcf8f2;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+}
+/* Tarjeta central del Login */
+.login-card {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(92, 51, 23, 0.12);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  border-top: 5px solid #6b3e26;
+}
+/* Contenedor del Logo circular */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.logo-circle {
+  width: 90px;
+  height: 90px;
+  background-color: #6b3e26;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f7eedd;
+  font-weight: bold;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  border: 3px solid #d4a373;
+}
+.login-card h2 {
+  color: #4a2e18;
+  margin-bottom: 8px;
+  font-size: 24px;
+}
+.subtitle {
+  color: #8c7355;
+  font-size: 13px;
+  margin-bottom: 24px;
+}
+/* Campos de formulario */
+.form-group {
+  text-align: left;
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  color: #5c4033;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.form-group input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #dcd1c1;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #fdfbf7;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+.form-group input:focus {
+  border-color: #8b5a2b;
+}
+/* Opciones (Recordar y Olvidaste contraseña) */
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+.remember-me {
+  color: #5c4033;
+}
+
+.forgot-password {
+  color: #8b5a2b;
+  text-decoration: none;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+/* Botón de Iniciar Sesión */
+.btn-login {
+  width: 100%;
+  padding: 12px;
+  background-color: #6b3e26;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-login:hover {
+  background-color: #53301c;
+}

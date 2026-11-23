@@ -1,0 +1,9 @@
+/* Tablas */
+.tabla-card { background: #fff; border: 1px solid var(--borde); border-radius: 14px; overflow: hidden; }
+.tabla-card.crema { background: transparent; font-family: 'Roboto Condensed', sans-serif; }
+.tabla-card table { width: 100%; border-collapse: collapse; }
+.tabla-card th { background: #f5ece0; text-align: left; padding: 14px 12px; font-size: 14px; }
+.tabla-card td { padding: 14px 12px; border-top: 1px solid var(--borde); font-size: 14px; }
+.tabla-card footer { display: flex; justify-content: space-between; align-items: center; padding: 16px; border-top: 1px solid var(--borde); }
+.paginas button { background: #fff; border: 1px solid var(--borde); border-radius: 4px; padding: 8px 12px; margin-left: 6px; cursor: pointer; }
+.paginas .on { background: var(--cafe); color: #fff; }

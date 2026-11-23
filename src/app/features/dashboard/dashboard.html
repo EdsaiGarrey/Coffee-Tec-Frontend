@@ -1,0 +1,53 @@
+@if (rol() === 'empleado') {
+  <h1>PANEL DE TRABAJO</h1>
+  <div class="accesos">
+    @for (a of accesos; track a.ruta) {
+      <a [routerLink]="a.ruta" class="acceso">
+        <span class="ico">{{ a.icono }}</span>
+        <div><strong>{{ a.titulo }}</strong><small>{{ a.texto }}</small></div>
+        <span>→</span>
+      </a>
+    }
+  </div>
+} @else {
+  <h1>Ventas</h1>
+  <div class="graficas">
+    <div>
+      <h2>Ventas Semanales</h2>
+      <div class="grafica-card">
+        <strong>Ventas mensuales</strong>
+        <svg viewBox="0 0 620 210" class="linea">
+          <polyline [attr.points]="linea" fill="none" stroke="#a8691f" stroke-width="2" />
+          @for (p of puntos; track $index) {
+            <circle [attr.cx]="p.x" [attr.cy]="p.y" r="3.5" fill="#fff" stroke="#a8691f" stroke-width="2" />
+            <text [attr.x]="p.x" [attr.y]="p.y - 8" text-anchor="middle" font-size="10">${{ p.v }}K</text>
+            <text [attr.x]="p.x" y="200" text-anchor="middle" font-size="10" fill="#777">{{ meses[$index] }}</text>
+          }
+        </svg>
+      </div>
+    </div>
+    <div>
+      <h2>Ventas Por Categoría</h2>
+      <div class="grafica-card dona-wrap">
+        <div class="dona"><div class="centro"><small>Total</small><strong>$43,510.00</strong></div></div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (rol() !== 'admin') {
+  <div class="tabla-card tabla-recientes">
+    <table>
+      <caption>PEDIDOS RECIENTES</caption>
+      <thead><tr><th>id_pedido</th><th>cliente</th><th>estado</th><th>fecha</th></tr></thead>
+      <tbody>
+        @for (r of recientes; track r.id) {
+          <tr><td>{{ r.id }}</td><td>{{ r.cliente }}</td><td>{{ r.estado }}</td><td>{{ r.fecha }}</td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  @if (rol() === 'empleado') {
+    <a routerLink="/pedidos" class="ver-todos">VER TODOS LOS PEDIDOS</a>
+  }
+}

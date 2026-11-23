@@ -1,0 +1,32 @@
+<div class="encabezado">
+  <h1>Usuarios registrados</h1>
+  <a routerLink="/usuarios/nuevo" class="btn">+ Nuevo usuario</a>
+</div>
+
+<div class="buscador">
+  <input placeholder="🔍 Buscar por nombre o correo electrónico..." />
+  <select><option>Todos los roles</option><option>Administrador</option><option>Gerente</option><option>Empleado</option></select>
+</div>
+
+<div class="tarjetas">
+  <div class="tarjeta"><small>Usuarios registrados</small><strong>342</strong><small>↗ 8 nuevos esta semana</small></div>
+  <div class="tarjeta"><small>Administradores</small><strong>12</strong><small>Acceso completo</small></div>
+  <div class="tarjeta"><small>Gerentes</small><strong>28</strong><small>Gestión avanzada</small></div>
+  <div class="tarjeta"><small>Empleados</small><strong>302</strong><small>Acceso limitado</small></div>
+</div>
+
+<div class="tabla-card">
+  <table>
+    <thead><tr><th>Usuario</th><th>Correo Electronico</th><th>Rol</th><th>Fecha de Registro</th></tr></thead>
+    <tbody>
+      @for (u of usuarios; track u.user) {
+        <tr>
+          <td><span class="avatar">{{ u.nombre[0] }}</span> <b>{{ u.nombre }}</b><br><small class="user">{{ u.user }}</small></td>
+          <td>{{ u.correo }}</td>
+          <td><span class="rol" [class.admin]="u.rol === 'Administrador'">{{ u.rol }}</span></td>
+          <td>{{ u.fecha }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

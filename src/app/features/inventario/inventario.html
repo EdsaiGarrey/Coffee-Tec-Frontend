@@ -1,0 +1,32 @@
+<div class="tarjetas">
+  <div class="tarjeta"><small>Total de insumos</small><strong>256</strong><small>↗ 12 nuevos esta semana</small></div>
+  <div class="tarjeta"><small>Bajo stock</small><strong>18</strong><small>Requieren reposición</small></div>
+  <div class="tarjeta"><small>Entradas del día</small><strong>32</strong><small>$4,850.00 en insumos</small></div>
+  <div class="tarjeta"><small>Salidas del día</small><strong>27</strong><small>$2,135.00 en consumo</small></div>
+</div>
+
+<div class="tabla-card bloque">
+  <div class="encabezado">
+    <h2>Desglose de Inventario</h2>
+    <select (change)="filtro.set($any($event.target).value)">
+      @for (c of categorias; track c) { <option [value]="c">{{ c === 'Todas' ? 'Filtrar por categoría' : c }}</option> }
+    </select>
+  </div>
+
+  <div class="mini">
+    <div><small>Total de insumos</small><strong>256</strong></div>
+    <div><small>Bajo stock</small><strong>18</strong></div>
+    <div><small>Entradas del día</small><strong>32</strong></div>
+    <div><small>Salidas del día</small><strong>27</strong></div>
+  </div>
+
+  <table>
+    <thead><tr><th>Insumo</th><th>Categoría</th><th>Stock Actual</th><th>Última Mov.</th></tr></thead>
+    <tbody>
+      @for (i of visibles(); track i.insumo) {
+        <tr><td>{{ i.insumo }}</td><td>{{ i.categoria }}</td><td>{{ i.stock }}</td><td>{{ i.mov }}</td></tr>
+      }
+    </tbody>
+  </table>
+  <p class="nota">* Datos de ejemplo para fines de demostración.</p>
+</div>

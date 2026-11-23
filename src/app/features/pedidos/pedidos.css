@@ -1,0 +1,4 @@
+.caja { background: #fff; padding: 16px; margin-bottom: 16px; }
+.info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.linea { display: flex; justify-content: space-between; padding: 8px 0; }
+.total { text-align: right; font-family: 'Lora', serif; }

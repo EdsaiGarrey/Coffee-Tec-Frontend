@@ -1,0 +1,13 @@
+.login { display: grid; grid-template-columns: 63% 37%; min-height: 100vh; }
+.foto { background: #2a1a10 url('/login-bg.jpg') center / cover no-repeat; }
+.panel { background: #f8f0e8; padding: 50px 40px 30px; display: flex; flex-direction: column; }
+.logo { width: 190px; align-self: center; margin-bottom: 70px; }
+.fila-label { display: flex; justify-content: space-between; align-items: baseline; }
+.fila-label a { font-size: 13px; text-decoration: none; }
+.recordar { display: flex; align-items: center; gap: 8px; font-size: 13px; margin: 6px 0 30px; }
+.seguro { text-align: center; font-size: 13px; margin-top: auto; }
+
+@media (max-width: 800px) {
+  .login { grid-template-columns: 1fr; }
+  .foto { display: none; }
+}

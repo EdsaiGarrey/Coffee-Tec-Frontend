@@ -1,0 +1,85 @@
+<h1>Pedidos</h1>
+
+<div class="tabla-card crema">
+  <table>
+    <thead>
+      <tr>
+        <th>Folio</th><th>Cliente</th><th>Tipo de servicio</th><th>Estado</th>
+        <th>Total</th><th>Hora</th><th>Responsable</th><th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (p of pedidos(); track p.folio) {
+        <tr>
+          <td>{{ p.folio }}</td>
+          <td>{{ p.cliente }}</td>
+          <td>{{ p.servicio }}</td>
+          <td><span [class]="'badge ' + clase(p.estado)">• {{ p.estado }}</span></td>
+          <td>${{ p.total.toFixed(2) }}</td>
+          <td>{{ p.hora }}</td>
+          <td>{{ p.responsable }}</td>
+          <td class="acciones">
+            <button (click)="abrir('ver', p)" title="Ver">👁</button>
+            <button (click)="abrir('editar', p)" title="Editar">✎</button>
+            <button (click)="abrir('eliminar', p)" title="Eliminar">🗑</button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+  <footer>
+    <span>Mostrando 1 a 10 de 196 pedidos</span>
+    <div class="paginas">
+      <button>‹</button><button class="on">1</button><button>2</button><button>3</button><button>…</button><button>20</button><button>›</button>
+    </div>
+  </footer>
+</div>
+
+@if (modal() === 'ver' && sel(); as p) {
+  <div class="overlay" (click)="cerrar()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-head"><span>Detalle del Pedido</span><button class="x" (click)="cerrar()">X</button></div>
+      <div class="modal-body">
+        <div class="caja info">
+          <div>Cliente: {{ p.cliente }}</div><div>Servicio: {{ p.servicio }}</div>
+          <div>Hora: {{ p.hora }} AM</div><div>Estado: [{{ p.estado }}]</div>
+          <div>Responsable: {{ p.responsable }}</div>
+        </div>
+        <div class="caja">
+          <div>PRODUCTOS:</div>
+          <div class="linea"><span>• 2x Cappuccino Tradicional</span><span>$110.00</span></div>
+          <div class="linea"><span>• 1x Panini de Jamón Serrano</span><span>$75.00</span></div>
+        </div>
+        <div class="total">TOTAL: ${{ p.total.toFixed(2) }}</div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (modal() === 'editar' && sel(); as p) {
+  <div class="overlay" (click)="cerrar()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <div class="modal-head" style="justify-content:center"><span>Editar pedido</span></div>
+      <div class="modal-body">
+        <div class="campo"><label>Folio</label><input [value]="p.folio" /></div>
+        <div class="campo"><label>Cliente</label><input [value]="p.cliente" /></div>
+        <div class="campo"><label>Estado</label>
+          <select>
+            <option>Pendiente</option><option>En preparación</option><option>Listo</option><option>Entregado</option>
+          </select>
+        </div>
+        <div class="campo"><label>Tipo de servicio</label>
+          <select><option>Para llevar</option><option>En el local</option></select>
+        </div>
+        <div class="botones" style="margin-top:10px">
+          <button class="btn" (click)="cerrar()">Guardar cambios</button>
+          <button class="btn btn-outline" (click)="cerrar()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@if (modal() === 'eliminar') {
+  <app-confirm-modal mensaje="¿Desea eliminar el pedido?" (si)="eliminar()" (no)="cerrar()" />
+}

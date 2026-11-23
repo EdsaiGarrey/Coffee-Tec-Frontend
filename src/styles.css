@@ -1,1 +1,51 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./css/variables.css";
+@import "./css/botones.css";
+@import "./css/tablas.css";
+@import "./css/modales.css";
+@import "./css/formularios.css";
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Inter', Arial, sans-serif; background: var(--crema); color: var(--texto); }
+h1, h2, .serif { font-family: 'Lora', Georgia, serif; font-weight: 400; }
+h1 { font-size: 34px; margin: 0 0 6px; }
+.sub-titulo { color: var(--gris); font-size: 14px; margin: 0 0 16px; }
+a { color: inherit; }
+
+/* Estructura de pantallas */
+.encabezado { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+.tarjetas { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+.tarjeta { background: #fff; border: 1px solid var(--borde); border-radius: 12px; padding: 14px 18px; min-width: 190px; }
+.tarjeta small { color: var(--gris); display: block; }
+.tarjeta strong { font-size: 26px; color: var(--cafe); }
+
+/* Badges */
+.badge { padding: 4px 10px; border-radius: 999px; font-size: 13px; white-space: nowrap; }
+.pendiente, .prep { background: #f3e1b8; color: #8a6a1f; }
+.listo { background: #d3e3cc; color: #5b7a4f; }
+.entregado { background: #d5e3ee; color: #56768f; }
+.activa { background: #148a4f; color: #fff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
+.inactiva { background: #6b7280; color: #fff; font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 4px; }
+
+/* Acciones */
+.acciones button { background: #f1e8dc; border: 0; color: var(--cafe); padding: 6px 8px; cursor: pointer; font-size: 16px; }
+
+/* TELÉFONO */
+@media (max-width: 600px) {
+  h1 { font-size: 26px; }
+  .encabezado { flex-direction: column; gap: 12px; }
+  .fila-2, .fila-2g { grid-template-columns: 1fr; }
+  .tarjeta { min-width: 100%; }
+  .tabla-card { overflow-x: auto; }
+  .tabla-card table { min-width: 650px; }
+}
+
+/* LAPTOP */
+@media (min-width: 601px) and (max-width: 1200px) {
+  .tarjeta { min-width: 160px; }
+  .tabla-card { overflow-x: auto; }
+}
+
+/* PC */
+@media (min-width: 1201px) {
+  .contenido { padding: 24px 40px; }
+}

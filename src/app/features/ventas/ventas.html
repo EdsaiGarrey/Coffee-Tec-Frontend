@@ -1,0 +1,18 @@
+<h1>Nueva venta</h1>
+<div class="venta">
+  <div class="productos">
+    @for (p of catalogo; track p.nombre) {
+      <button class="prod" (click)="agregar(p)">
+        <strong>{{ p.nombre }}</strong><span>${{ p.precio.toFixed(2) }}</span>
+      </button>
+    }
+  </div>
+  <aside class="ticket">
+    <h2>Pedido actual</h2>
+    @for (i of carrito(); track i.nombre) {
+      <div class="linea"><span>{{ i.cant }}x {{ i.nombre }}</span><span>${{ (i.precio * i.cant).toFixed(2) }}</span></div>
+    } @empty { <p class="vacio">Sin productos</p> }
+    <div class="linea total"><span>TOTAL</span><span>${{ total().toFixed(2) }}</span></div>
+    <div class="botones"><button class="btn btn-outline" (click)="limpiar()">Limpiar</button><button class="btn">Cobrar</button></div>
+  </aside>
+</div>
