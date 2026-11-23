@@ -25,3 +25,7 @@ h3 { font-family: 'Inter', sans-serif; font-size: 17px; margin: 18px 0 12px; }
   .resumen, .datos { grid-template-columns: 1fr; }
   .totales, .mov-head { flex-direction: column; gap: 8px; }
 }
+
+/* Caja cerrada */
+.cerrada { background: #6b7280; color: #fff; padding: 3px 10px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+.aviso-cerrada { background: #f3e1b8; color: #8a6a1f; }

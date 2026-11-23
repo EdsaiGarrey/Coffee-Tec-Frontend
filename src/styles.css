@@ -30,7 +30,7 @@ a { color: inherit; }
 .acciones button { background: #f1e8dc; border: 0; color: var(--cafe); padding: 6px 8px; cursor: pointer; font-size: 16px; }
 
 /* TELÉFONO */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   h1 { font-size: 26px; }
   .encabezado { flex-direction: column; gap: 12px; }
   .fila-2, .fila-2g { grid-template-columns: 1fr; }
@@ -40,12 +40,7 @@ a { color: inherit; }
 }
 
 /* LAPTOP */
-@media (min-width: 601px) and (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1280px) {
   .tarjeta { min-width: 160px; }
   .tabla-card { overflow-x: auto; }
-}
-
-/* PC */
-@media (min-width: 1201px) {
-  .contenido { padding: 24px 40px; }
 }
