@@ -1,0 +1,53 @@
+<div class="encabezado">
+  <div><h1>Categorías</h1><p class="sub-titulo">Organiza los productos disponibles en la cafetería.</p></div>
+  <a routerLink="/categorias/nueva" class="btn">+ Nueva categoría</a>
+</div>
+
+<div class="tarjetas"><div class="tarjeta"><small>Categorías registradas</small><strong>{{ categorias().length }}</strong></div></div>
+
+<div class="tabla-card">
+  <table>
+    <thead><tr><th>Nombre</th><th>Descripción</th><th>Estado</th><th>Acciones</th></tr></thead>
+    <tbody>
+      @for (c of categorias(); track c.slug) {
+        <tr>
+          <td><b>{{ c.nombre }}</b><br><small class="slug">{{ c.slug }}</small></td>
+          <td>{{ c.descripcion }}</td>
+          <td><span [class]="c.activa ? 'activa' : 'inactiva'">{{ c.activa ? 'Activa' : 'Inactiva' }}</span></td>
+          <td class="acciones">
+            <button (click)="abrir('editar', c)">
+              <span class="iconify" data-icon="akar-icons:pencil"></span>
+            </button>
+            <button (click)="abrir('eliminar', c)">
+              <span class="iconify" data-icon="mdi:delete"></span>
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+@if (modal() === 'editar' && sel(); as c) {
+  <div class="overlay" (click)="cerrar()">
+    <div class="modal ancho" (click)="$event.stopPropagation()">
+      <div class="modal-head"><span>Editar categoría</span><small>{{ c.nombre }}</small></div>
+      <div class="modal-body">
+        <div class="fila-2">
+          <div class="campo"><label>Nombre</label><input [value]="c.nombre" /></div>
+          <div class="campo"><label>Tipo</label><input [value]="c.slug" /></div>
+        </div>
+        <div class="campo"><label>Descripción</label><textarea rows="3">{{ c.descripcion }}</textarea></div>
+        <label><input type="checkbox" [checked]="c.activa" /> Categoría activa</label>
+      </div>
+      <div class="modal-foot">
+        <button class="btn btn-outline" (click)="cerrar()">Cancelar</button>
+        <button class="btn btn-naranja" (click)="cerrar()">Guardar cambios</button>
+      </div>
+    </div>
+  </div>
+}
+
+@if (modal() === 'eliminar') {
+  <app-confirm-modal mensaje="¿Desea eliminar la categoría?" (si)="eliminar()" (no)="cerrar()" />
+}

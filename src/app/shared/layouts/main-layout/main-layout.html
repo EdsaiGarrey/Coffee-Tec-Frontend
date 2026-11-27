@@ -1,0 +1,21 @@
+<div class="layout">
+  <aside class="sidebar">
+    <img src="logo-coffeetec.png" alt="Coffee Tec" class="logo" />
+    <nav>
+      @for (item of menu(); track item.ruta) {
+        <a [routerLink]="item.ruta" routerLinkActive="activo">{{ item.label }}</a>
+      }
+    </nav>
+    <button class="logout" (click)="salir()">Log out</button>
+  </aside>
+
+  <header class="topbar">
+    <div>
+      <div>{{ titulo() }}</div>
+      @if (rol() === 'empleado') { <div class="sub">Buen Turno</div> }
+    </div>
+    <span>{{ nombreRol() }}</span>
+  </header>
+
+  <main class="contenido"><router-outlet /></main>
+</div>

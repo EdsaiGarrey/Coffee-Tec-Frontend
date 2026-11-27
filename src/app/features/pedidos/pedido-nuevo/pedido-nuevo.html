@@ -1,0 +1,62 @@
+<div class="contenedor-nuevo">
+  <div class="encabezado">
+    <h1>Nuevo Pedido</h1>
+    <a routerLink="/pedidos" class="btn-secundario">← Volver</a>
+  </div>
+
+  <div class="formulario-card">
+    <div class="fila">
+      <div class="campo">
+        <label>Cliente / Mesa *</label>
+        <input type="text" [(ngModel)]="cliente" placeholder="Ej. Mesa 3 o Juan Pérez" />
+      </div>
+
+      <div class="campo">
+        <label>Tipo de servicio</label>
+        <select [(ngModel)]="tipoServicio">
+          <option value="En el local">En el local</option>
+          <option value="Para llevar">Para llevar</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="seccion-productos">
+      <h3>Agregar productos</h3>
+      <div class="fila-agregar">
+        <select [(ngModel)]="productoSeleccionado">
+          @for (prod of catalogo; track prod.nombre) {
+            <option [value]="prod.nombre">{{ prod.nombre }} - ${{ prod.precio }}</option>
+          }
+        </select>
+        <input type="number" [(ngModel)]="cantidad" min="1" class="input-cant" />
+        <button type="button" class="btn" (click)="agregarItem()">+ Agregar</button>
+      </div>
+
+      <div class="lista-items">
+        @for (item of items; track item.nombre; let i = $index) {
+          <div class="item-row">
+            <span>{{ item.cantidad }}x {{ item.nombre }}</span>
+            <div>
+              <strong>${{ (item.cantidad * item.precio).toFixed(2) }}</strong>
+              <button type="button" class="btn-eliminar" (click)="eliminarItem(i)">✕</button>
+            </div>
+          </div>
+        } @empty {
+          <p class="vacio">Aún no has agregado productos al pedido.</p>
+        }
+      </div>
+    </div>
+
+    <div class="campo">
+      <label>Observaciones</label>
+      <textarea [(ngModel)]="observaciones" rows="2" placeholder="Ej. Sin azúcar, leche deslactosada..."></textarea>
+    </div>
+
+    <div class="footer-acciones">
+      <div class="total">Total: <span>${{ total.toFixed(2) }}</span></div>
+      <button type="button" class="btn" [disabled]="!cliente.trim() || items.length === 0" (click)="guardarPedido()">
+        Guardar Pedido
+      </button>
+    </div>
+  </div>
+</div>

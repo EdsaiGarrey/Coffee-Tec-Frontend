@@ -1,0 +1,66 @@
+<div class="encabezado">
+  <div>
+    <h1 class="caja-titulo">Caja</h1>
+    <p class="sub-titulo">Apertura y corte de caja.</p>
+  </div>
+  @if (abierta()) {
+    <button class="btn btn-naranja" (click)="confirmando.set(true)">Cerrar caja</button>
+  } @else {
+    <button class="btn btn-naranja" (click)="abrir()">Abrir caja</button>
+  }
+</div>
+
+<div class="aviso" [class.aviso-cerrada]="!abierta()">
+  {{ abierta() ? 'La caja fue abierta correctamente.' : 'La caja fue cerrada. Corte de caja realizado.' }}
+</div>
+
+<section class="panel">
+  <div class="panel-head"><strong>Caja activa</strong><span [class]="abierta() ? 'abierta' : 'cerrada'">{{ abierta() ? 'Abierta' : 'Cerrada' }}</span></div>
+
+  <div class="datos">
+    <div><b>Número de caja:</b> #3</div><div><b>Monto inicial:</b> $12,345.00</div>
+    <div><b>Responsable:</b> Administrador de Prueba</div><div><b>Estado:</b> {{ abierta() ? 'Abierta' : 'Cerrada' }}</div>
+    <div><b>Fecha:</b> 14/10/2026, 21:54:01</div>
+  </div>
+
+  <h3>Resumen del turno por método de pago</h3>
+  <div class="resumen">
+    <div class="metodo verde"><small>Efectivo</small><strong>$450.00</strong><small>2 ventas</small></div>
+    <div class="metodo azul"><small>Tarjeta</small><strong>$380.00</strong><small>Débito $180.00 · Crédito $200.00</small></div>
+    <div class="metodo cafe"><small>Transferencia</small><strong>$220.00</strong><small>1 venta</small></div>
+  </div>
+
+  <div class="totales">
+    <span><b>Vendido total:</b> $1,050.00</span>
+    <span><b>Efectivo esperado:</b> $12,795.00 (inicial + ventas en efectivo)</span>
+  </div>
+
+  <div class="mov-head">
+    <h3>Movimientos del turno</h3>
+    <div>
+      @for (f of filtros; track f) {
+        <button class="filtro" [class.on]="filtro() === f" (click)="filtro.set(f)">{{ f }}</button>
+      }
+    </div>
+  </div>
+
+  <table class="mov">
+    <thead><tr><th>Pedido</th><th>Hora</th><th>Método de pago</th><th>Detalle</th><th class="der">Monto</th></tr></thead>
+    <tbody>
+      @for (m of visibles(); track m.pedido) {
+        <tr>
+          <td>{{ m.pedido }}</td><td>{{ m.hora }}</td>
+          <td><span [class]="'pill ' + clase(m.metodo)">{{ m.metodo }}</span></td>
+          <td>{{ m.detalle }}</td><td class="der">${{ m.monto.toFixed(2) }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</section>
+
+@if (confirmando()) {
+  <app-confirm-modal
+    mensaje="¿Cerrar la caja y hacer el corte?"
+    (si)="cerrar()"
+    (no)="confirmando.set(false)" />
+}

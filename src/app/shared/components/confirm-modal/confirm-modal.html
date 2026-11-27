@@ -1,0 +1,9 @@
+<div class="overlay" (click)="no.emit()">
+  <div class="modal confirmar" (click)="$event.stopPropagation()">
+    <h2>{{ mensaje() }}</h2>
+    <div class="botones">
+      <button class="btn btn-outline" (click)="no.emit()">NO</button>
+      <button class="btn" (click)="si.emit()">SI</button>
+    </div>
+  </div>
+</div>

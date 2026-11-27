@@ -1,0 +1,10 @@
+/* Formularios */
+.campo { margin-bottom: 16px; }
+.campo label { display: block; font-weight: 600; margin-bottom: 6px; font-size: 14px; }
+.campo input, .campo select, .campo textarea {
+  width: 100%; padding: 10px 12px; border: 1px solid #999; border-radius: 6px;
+  background: #f5f5f5; font-size: 14px; font-family: inherit; outline: none;
+}
+.campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--cafe); }
+.form-centrado { max-width: 440px; margin: 10px auto; }
+.fila-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }

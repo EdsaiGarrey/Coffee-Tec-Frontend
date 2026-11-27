@@ -1,0 +1,25 @@
+<div class="login">
+  <div class="foto"></div>
+  <div class="panel">
+    <img src="/logo-coffeetec.png" alt="Coffee Tec" class="logo" />
+
+    <div class="campo">
+      <label>Correo electrónico</label>
+      <input type="email" (input)="email.set($any($event.target).value)" />
+    </div>
+
+    <div class="campo">
+      <div class="fila-label">
+        <label>Contraseña</label>
+        <a routerLink="/recuperar">Olvidaste tu contraseña?</a>
+      </div>
+      <input type="password" />
+    </div>
+
+    <label class="recordar"><input type="checkbox" /> Recordar</label>
+
+    <button class="btn btn-naranja btn-block" (click)="entrar()">Iniciar Sesión</button>
+
+    <p class="seguro">acceso seguro y protegido</p>
+  </div>
+</div>
