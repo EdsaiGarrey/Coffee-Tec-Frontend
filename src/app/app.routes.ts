@@ -11,7 +11,8 @@ export const routes: Routes = [
     component: MainLayout,
     children: [
       { path: 'dashboard', loadComponent: () => import('./features/dashboard/dashboard').then(m => m.Dashboard) },
-      { path: 'pedidos', loadComponent: () => import('./features/pedidos/pedidos').then(m => m.Pedidos) },
+      { path: 'pedidos', loadComponent: () => import('./features/pedidos/pedidos').then(m => m.PedidosComponent) },
+      { path: 'pedidos/nuevo', loadComponent: () => import('./features/pedidos/pedido-nuevo/pedido-nuevo').then(m => m.PedidoNuevoComponent) },
       { path: 'caja', loadComponent: () => import('./features/caja/caja').then(m => m.Caja) },
       { path: 'usuarios', canActivate: [roleGuard(['admin'])], loadComponent: () => import('./features/usuarios/usuarios').then(m => m.Usuarios) },
       { path: 'usuarios/nuevo', canActivate: [roleGuard(['admin'])], loadComponent: () => import('./features/usuarios/usuario-nuevo/usuario-nuevo').then(m => m.UsuarioNuevo) },

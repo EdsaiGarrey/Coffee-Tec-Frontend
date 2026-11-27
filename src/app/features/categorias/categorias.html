@@ -15,8 +15,12 @@
           <td>{{ c.descripcion }}</td>
           <td><span [class]="c.activa ? 'activa' : 'inactiva'">{{ c.activa ? 'Activa' : 'Inactiva' }}</span></td>
           <td class="acciones">
-            <button (click)="abrir('eliminar', c)">🗑</button>
-            <button (click)="abrir('editar', c)">✎</button>
+            <button (click)="abrir('editar', c)">
+              <span class="iconify" data-icon="akar-icons:pencil"></span>
+            </button>
+            <button (click)="abrir('eliminar', c)">
+              <span class="iconify" data-icon="mdi:delete"></span>
+            </button>
           </td>
         </tr>
       }

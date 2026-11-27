@@ -21,3 +21,26 @@
 .titulo-gerente { font-family: 'Lora', serif; font-size: 22px; margin: 20px 0 30px 20px; }
 .tabla-gerente { max-width: 900px; margin: 0 auto; }
 .tabla-gerente caption { background: #f5f5f5; font-size: 11px; color: #888; padding: 8px; }
+
+.acciones {
+  display: flex;
+  gap: 5px;
+}
+
+.acciones button {
+  background-color: #84501F;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 4px 6px;
+  transition: background-color 0.3s ease;
+}
+
+.acciones button:hover {
+  background-color: #6D411A;
+}
+
+.acciones .iconify {
+  font-size: 16px;
+  color: #fff;
+}

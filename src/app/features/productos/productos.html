@@ -64,8 +64,12 @@
             <td><b>{{ p.precio | number:'1.0-2' }} $</b></td>
             <td><span [class]="p.activo ? 'activa' : 'inactiva'">{{ p.activo ? 'Activo' : 'Inactivo' }}</span></td>
             <td class="acciones">
-              <button type="button" title="Editar" (click)="abrir('editar', p)">✏️</button>
-              <button type="button" title="Eliminar" (click)="abrir('eliminar', p)">🗑️</button>
+              <button type="button" title="Editar" (click)="abrir('editar', p)">
+                <span class="iconify" data-icon="akar-icons:pencil"></span>
+              </button>
+              <button type="button" title="Eliminar" (click)="abrir('eliminar', p)">
+                <span class="iconify" data-icon="mdi:delete"></span>
+              </button>
             </td>
           </tr>
         } @empty {

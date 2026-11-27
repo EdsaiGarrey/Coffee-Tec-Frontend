@@ -1,7 +1,7 @@
 :root {
-  --cafe: #84501f; /* sidebar, header, botones oscuros */
-  --cafe-btn: #ab5a19; /* botón Iniciar sesión / Guardar */
-  --crema: #f7f0e9; /* fondo de contenido */
+  --cafe: #84501f;     /* sidebar, header, botones oscuros */
+  --cafe-btn: #84501f; /* botón Iniciar sesión / Guardar */
+  --crema: #f7f0e9;    /* fondo de contenido */
   --crema-claro: #fdfbf7;
   --borde: #dcd1c1;
   --texto: #2b2420;

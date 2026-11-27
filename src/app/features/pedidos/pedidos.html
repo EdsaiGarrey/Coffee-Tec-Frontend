@@ -1,4 +1,7 @@
-<h1>Pedidos</h1>
+<div class="encabezado">
+  <h1>Pedidos</h1>
+  <a routerLink="/pedidos/nuevo" class="btn">+ Agregar pedido</a>
+</div>
 
 <div class="tabla-card crema">
   <table>
@@ -19,9 +22,17 @@
           <td>{{ p.hora }}</td>
           <td>{{ p.responsable }}</td>
           <td class="acciones">
-            <button (click)="abrir('ver', p)" title="Ver">👁</button>
-            <button (click)="abrir('editar', p)" title="Editar">✎</button>
-            <button (click)="abrir('eliminar', p)" title="Eliminar">🗑</button>
+            <button (click)="abrir('ver', p)" title="Ver">
+              <span class="iconify" data-icon="mdi:eye"></span>
+            </button>
+
+            <button (click)="abrir('editar', p)" title="Editar">
+              <span class="iconify" data-icon="akar-icons:pencil"></span>
+            </button>
+
+            <button (click)="abrir('eliminar', p)" title="Eliminar">
+              <span class="iconify" data-icon="mdi:delete"></span>
+            </button>
           </td>
         </tr>
       }
@@ -30,7 +41,7 @@
   <footer>
     <span>Mostrando 1 a 10 de 196 pedidos</span>
     <div class="paginas">
-      <button>‹</button><button class="on">1</button><button>2</button><button>3</button><button>…</button><button>20</button><button>›</button>
+      <button><</button><button class="on">1</button><button>2</button><button>3</button><button>...</button><button>></button>
     </div>
   </footer>
 </div>
@@ -47,8 +58,15 @@
         </div>
         <div class="caja">
           <div>PRODUCTOS:</div>
-          <div class="linea"><span>• 2x Cappuccino Tradicional</span><span>$110.00</span></div>
-          <div class="linea"><span>• 1x Panini de Jamón Serrano</span><span>$75.00</span></div>
+          @for (i of p.items ?? []; track i.nombre) {
+            <div class="linea"><span>• {{ i.cantidad }}x {{ i.nombre }}</span><span>${{ (i.cantidad * i.precio).toFixed(2) }}</span></div>
+          } @empty {
+            <div class="linea"><span>• 2x Cappuccino Tradicional</span><span>$110.00</span></div>
+            <div class="linea"><span>• 1x Panini de Jamón Serrano</span><span>$75.00</span></div>
+          }
+          @if (p.observaciones) {
+            <div class="linea"><span>Observaciones: {{ p.observaciones }}</span></div>
+          }
         </div>
         <div class="total">TOTAL: ${{ p.total.toFixed(2) }}</div>
       </div>

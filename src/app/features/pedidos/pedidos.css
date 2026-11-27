@@ -2,3 +2,26 @@
 .info { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .linea { display: flex; justify-content: space-between; padding: 8px 0; }
 .total { text-align: right; font-family: 'Lora', serif; }
+
+.acciones {
+  display: flex;
+  gap: 5px;
+}
+
+.acciones button {
+  background-color: #84501F;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 4px 6px;
+  transition: background-color 0.3s ease;
+}
+
+.acciones button:hover {
+  background-color: #6D411A;
+}
+
+.acciones .iconify {
+  font-size: 16px;
+  color: #fff;
+}
